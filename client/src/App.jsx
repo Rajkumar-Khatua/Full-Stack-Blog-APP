@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import SingleBlog from "./pages/SingleBlog";
 import AllBlogs from "./pages/AllBlogs";
+import NavbarMobile from "./components/NavbarMobile";
 
 function App() {
   const Layout = () => {
@@ -13,7 +14,7 @@ function App() {
       <div className="app">
         <NavbarDeskTop />
         <Outlet />
-        <Footer />
+        <NavbarMobile />
       </div>
     );
   };
