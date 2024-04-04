@@ -1,7 +1,6 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { TbCategory2 } from "react-icons/tb";
 import { TfiMoney } from "react-icons/tfi";
-import { PiHandshakeThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
@@ -17,7 +16,7 @@ const routes = [
   },
   {
     name: "Categories",
-    href: "/categories",
+    href: "/blogs",
     icon: TbCategory2,
     active: Boolean,
   },
@@ -25,12 +24,6 @@ const routes = [
     name: "Pricing",
     href: "/pricing",
     icon: TfiMoney,
-    active: Boolean,
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-    icon: PiHandshakeThin,
     active: Boolean,
   },
 ];

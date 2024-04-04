@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
+import { CiBookmarkCheck } from "react-icons/ci";
 
 const UserModel = ({ user, logout, isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -50,23 +51,41 @@ const UserModel = ({ user, logout, isOpen, onClose }) => {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center h-full gap-5">
-        <img
-          src={user.profilePic}
-          alt="Profile"
-          className="w-16 h-16 rounded-full border hover:shadow-md cursor-pointer"
-        />
+        <Link
+          to="/profile"
+          className="
+        flex
+        items-center
+        gap-2
+        flex-col
+        justify-center
+        transition
+        "
+        >
+          <img
+            src={user.profilePic}
+            alt="Profile"
+            className="w-16 h-16 rounded-full border hover:shadow-md cursor-pointer"
+          />
+          <span>
+            <h1 className="text-sm font-semibold">{user?.name}</h1>
+            <p className="text-xs text-gray-500">{user?.email}</p>
+          </span>
+        </Link>
         <div
           className="
                     bg-black
                     text-white
-                    px-4
-                    py-2
-                    rounded-md
+                    px-2
+                    py-1
+                    rounded-full
                     transition
                     duration-300
                     hover:shadow-lg
                     cursor-pointer
                     hover:scale-105
+                    hover:bg-white
+                    hover:text-black border
                     "
         >
           <Link className="flex items-center" to="/write">
@@ -74,6 +93,7 @@ const UserModel = ({ user, logout, isOpen, onClose }) => {
             <BiPencil className="ml-2" />
           </Link>
         </div>
+
         <div
           className="
             flex
@@ -91,6 +111,7 @@ const UserModel = ({ user, logout, isOpen, onClose }) => {
                     flex
                     items-center
                     justify-center
+                    gap-2
                     w-full
                     h-full
                     text-black
@@ -111,11 +132,36 @@ const UserModel = ({ user, logout, isOpen, onClose }) => {
             Logout
           </button>
           <Link
-            to="/settings"
+            to="/saved"
+            className="
+          flex
+          items-center
+          justify-center
+          gap-2
+          w-full
+          h-full
+          text-black
+          text-xs
+          font-medium
+          transition
+          duration-300
+          ease-in-out
+          transform
+          hover:text-purple-500
+          active:scale-110
+          cursor-pointer
+          border-r"
+          >
+            <CiBookmarkCheck fontSize={22} className="ml-2" />
+            Saved
+          </Link>
+          <Link
+            to="/profile"
             className="
                     flex
                     items-center
                     justify-center
+                    gap-2
                     w-full
                     h-full
                     text-black

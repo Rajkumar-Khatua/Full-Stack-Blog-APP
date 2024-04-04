@@ -2,7 +2,6 @@ import { IoHomeOutline } from "react-icons/io5";
 import { TbCategory2 } from "react-icons/tb";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { TfiMoney } from "react-icons/tfi";
-import { PiHandshakeThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
@@ -18,7 +17,7 @@ const routes = [
   },
   {
     name: "Categories",
-    href: "/categories",
+    href: "/blogs",
     icon: TbCategory2,
     active: Boolean,
   },
@@ -26,12 +25,6 @@ const routes = [
     name: "Pricing",
     href: "/pricing",
     icon: TfiMoney,
-    active: Boolean,
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-    icon: PiHandshakeThin,
     active: Boolean,
   },
 ];
@@ -100,29 +93,29 @@ const NavbarDeskTop = () => {
           </Link>
         </div>
         <div className="flex items-center justify-center">
-          <ul className="flex ml-8 p-2 gap-2">
-            {routes.map((route, index) => (
-              <li key={index} className="mr-4">
-                <Link
-                  href={route.href}
-                  className={`flex
-                items-center
-                text-md
-                px-1
-                hover:text-gray-700
-                transition
-                duration-300 ${
-                  location.pathname === route.href
-                    ? "text-gray-700 font-semibold text-md border-b-2 border-black"
-                    : "text-black"
-                }`}
-                >
-                  {route.icon && <route.icon className="mr-2" />}
-                  {route.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {routes.map((route, index) => (
+            <Link
+              to={route.href}
+              key={index}
+              className={`
+              flex
+              items-center
+              text-md
+              px-5
+              hover:text-gray-700
+              transition
+              duration-300 ${
+                location.pathname === route.href
+                  ? "text-gray-700 font-semibold text-md border-b-2 border-black"
+                  : "text-black"
+              }`}
+            >
+              <div className="flex items-center justify-center gap-2">
+                <route.icon className="text-2xl" />
+                {route.name}
+              </div>
+            </Link>
+          ))}
         </div>
         {user ? (
           <div className="flex items-center gap-5">
