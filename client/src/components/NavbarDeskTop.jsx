@@ -7,6 +7,8 @@ import { useLocation } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
 import UserModel from "./UserModel";
 import { useCallback, useState } from "react";
+import { useRef } from "react";
+import { CiSearch } from "react-icons/ci";
 
 const routes = [
   {
@@ -35,6 +37,8 @@ const NavbarDeskTop = () => {
     profilePic: "/logo.png",
   };
   const location = useLocation();
+  const searchInput = useRef(null);
+
   const [open, setOpen] = useState(false);
 
   const handleOpenUserModel = useCallback(() => {
@@ -48,6 +52,13 @@ const NavbarDeskTop = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(searchInput.current.value);
+    document.getElementById("search").innerHTML = searchInput.current.value;
+  };
+
   return (
     <>
       <nav
@@ -91,6 +102,30 @@ const NavbarDeskTop = () => {
           "
             />
           </Link>
+          <div
+            className="
+          flex
+          items-center
+          ml-5
+          border
+          p-1
+          rounded-md
+          "
+          >
+            <form onSubmit={handleSearch} className="flex items-center">
+              <input
+                ref={searchInput}
+                type="text"
+                placeholder="Search..."
+                className="
+              bg-transparent
+              outline-none
+              border-none
+              "
+              />
+              <CiSearch size={22} />
+            </form>
+          </div>
         </div>
         <div className="flex items-center justify-center">
           {routes.map((route, index) => (
